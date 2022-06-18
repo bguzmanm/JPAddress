@@ -1,8 +1,6 @@
 package cl.sustantiva.sakila.entitys;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.awt.*;
 
 /**
@@ -14,6 +12,7 @@ import java.awt.*;
  * @since 16-06-22
  */
 @Entity
+@Table(name = "address")
 public class Address {
 
     @Id
@@ -21,32 +20,36 @@ public class Address {
     private String address;
     private String address2;
     private String district;
-    private int city_id;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "city_id")
+    private City city;
+
     private String postal_code;
 
-    @Column(columnDefinition = "geometry(Point,4326)")
-    private Point location;
+    //@Column(columnDefinition = "geometry(Point,4326)")
+    //private Point location;
 
     public Address() {
         super();
     }
 
-    public Address(int address_id, String address, String address2, String district, int city_id, String postal_code, Point location) {
+/*    public Address(int address_id, String address, String address2, String district, City city, String postal_code, Point location) {
         this.address_id = address_id;
         this.address = address;
         this.address2 = address2;
         this.district = district;
-        this.city_id = city_id;
+        this.city = city;
         this.postal_code = postal_code;
         this.location = location;
-    }
+    }*/
 
-    public Address(int address_id, String address, String address2, String district, int city_id, String postal_code) {
+    public Address(int address_id, String address, String address2, String district, City city, String postal_code) {
         this.address_id = address_id;
         this.address = address;
         this.address2 = address2;
         this.district = district;
-        this.city_id = city_id;
+        this.city = city;
         this.postal_code = postal_code;
     }
 
@@ -82,12 +85,12 @@ public class Address {
         this.district = district;
     }
 
-    public int getCity_id() {
-        return city_id;
+    public City getCity() {
+        return city;
     }
 
-    public void setCity_id(int city_id) {
-        this.city_id = city_id;
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public String getPostal_code() {
@@ -98,11 +101,11 @@ public class Address {
         this.postal_code = postal_code;
     }
 
-    public Point getLocation() {
+/*    public Point getLocation() {
         return location;
     }
 
     public void setLocation(Point location) {
         this.location = location;
-    }
+    }*/
 }

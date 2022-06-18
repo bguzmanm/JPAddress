@@ -11,12 +11,12 @@
     <title>Agenda de Direcciones</title>
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/estilo.css">"
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/estilo.css">
     <script src="https://kit.fontawesome.com/81a2ed02b0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container">
 <header>
     <h1>Bienvenidos</h1>
-  <a href="#">Direcciones</a> | <a href="#">Ciudades</a> | <a href="${pageContext.request.contextPath}/countrys">Paises</a>
+    <a href="${pageContext.request.contextPath}/">Home</a> | <a href="${pageContext.request.contextPath}/address">Direcciones</a> | <a href="${pageContext.request.contextPath}/citys">Ciudades</a> | <a href="${pageContext.request.contextPath}/countrys">Paises</a>
 </header>

@@ -1,7 +1,7 @@
 package cl.sustantiva.sakila.entitys;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * JPAddress
@@ -13,15 +13,22 @@ import javax.persistence.Id;
  */
 
 @Entity
+@Table(name = "country")
 public class Country {
 
     @Id
     private int country_id;
     private String country;
 
+    @OneToMany()
+    @JoinColumn(name = "country_id")
+    private List<City> cityList;
+
     public Country(){
         super();
     }
+
+
 
     public Country(int country_id, String country) {
         this.country_id = country_id;

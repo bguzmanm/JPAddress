@@ -1,7 +1,6 @@
 package cl.sustantiva.sakila.entitys;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * JPAddress
@@ -13,22 +12,25 @@ import javax.persistence.Id;
  */
 
 @Entity
+@Table(name = "city")
 public class City {
 
     @Id
     private int city_id;
 
     private String city;
-    private int country_id;
+    @OneToOne()
+    @JoinColumn(name="country_id")
+    private Country country;
 
     public City() {
         super();
     }
 
-    public City(int city_id, String city, int country_id) {
+    public City(int city_id, String city, Country country) {
         this.city_id = city_id;
         this.city = city;
-        this.country_id = country_id;
+        this.country = country;
     }
 
     public int getCity_id() {
@@ -47,11 +49,11 @@ public class City {
         this.city = city;
     }
 
-    public int getCountry_id() {
-        return country_id;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountry_id(int country_id) {
-        this.country_id = country_id;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }
