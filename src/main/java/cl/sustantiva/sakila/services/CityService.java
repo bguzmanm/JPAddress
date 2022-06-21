@@ -21,4 +21,6 @@ public interface CityService {
     public City read(int city_id);
     public void update(City c);
     public void delete(int city_id);
+
+    public List<City> readByCountry(int country_id);
 }

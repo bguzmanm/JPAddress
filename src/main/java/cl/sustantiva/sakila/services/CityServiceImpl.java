@@ -2,6 +2,8 @@ package cl.sustantiva.sakila.services;
 
 import cl.sustantiva.sakila.entitys.City;
 import cl.sustantiva.sakila.repos.CityRepo;
+import org.hibernate.Criteria;
+import org.hibernate.internal.CriteriaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +46,11 @@ public class CityServiceImpl implements CityService {
     @Override
     public void delete(int city_id) {
         cr.deleteById(city_id);
+    }
+
+    @Override
+    public List<City> readByCountry(int country_id) {
+
+        return cr.findByCountryId(country_id);
     }
 }

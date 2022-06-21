@@ -15,6 +15,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,10 @@
                 <tr>
                     <th><c:out value="${c.getCountry_id()}"></c:out></th>
                     <td><c:out value="${c.getCountry()}"></c:out></td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/countrys/edit/${c.getCountry_id()}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="${pageContext.request.contextPath}/countrys/del/${c.getCountry_id()}"><i class="fa-solid fa-trash-can"></i></a>
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>
