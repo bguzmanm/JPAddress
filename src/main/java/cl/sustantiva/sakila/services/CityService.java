@@ -1,6 +1,7 @@
 package cl.sustantiva.sakila.services;
 
 import cl.sustantiva.sakila.entitys.City;
+import cl.sustantiva.sakila.entitys.Country;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,5 +23,5 @@ public interface CityService {
     public void update(City c);
     public void delete(int city_id);
 
-    public List<City> readByCountry(int country_id);
+    public List<City> readByCountry(Country country);
 }

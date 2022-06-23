@@ -25,7 +25,7 @@
       <input type="text" class="form-control" id="district" name="district" placeholder="Av. Libertador Bernardo O'Higgins" value="${address.getDistrict()}">
     </div>
     <div class="mb-3">
-      <label for="country" class="form-label">Nombre</label>
+      <label for="country" class="form-label">País</label>
 
       <select class="form-select" id="country" name="country">
       <c:forEach var="country" items="${countrys}">

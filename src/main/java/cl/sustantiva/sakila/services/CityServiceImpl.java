@@ -1,6 +1,7 @@
 package cl.sustantiva.sakila.services;
 
 import cl.sustantiva.sakila.entitys.City;
+import cl.sustantiva.sakila.entitys.Country;
 import cl.sustantiva.sakila.repos.CityRepo;
 import org.hibernate.Criteria;
 import org.hibernate.internal.CriteriaImpl;
@@ -49,8 +50,8 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public List<City> readByCountry(int country_id) {
+    public List<City> readByCountry(Country country) {
 
-        return cr.findByCountryId(country_id);
+        return cr.findByCountryId(country);
     }
 }

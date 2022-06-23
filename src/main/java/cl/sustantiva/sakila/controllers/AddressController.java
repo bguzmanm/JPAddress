@@ -3,6 +3,7 @@ package cl.sustantiva.sakila.controllers;
 import cl.sustantiva.sakila.entitys.Address;
 import cl.sustantiva.sakila.services.AddressService;
 import cl.sustantiva.sakila.services.CityService;
+import cl.sustantiva.sakila.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,9 @@ public class AddressController {
     @Autowired
     CityService cs;
 
+    @Autowired
+    CountryService cos;
+
     @GetMapping()
     public String getAddress(Model model){
 
@@ -43,8 +47,11 @@ public class AddressController {
 
         Address a = as.read(id);
 
+        System.out.println(" País: " + a.getCity().getCountry().getCountry_id());
+
         model.addAttribute("address", as.read(id));
-        model.addAttribute("citys", cs.readByCountry(a.getCity().getCountry().getCountry_id()));
+        model.addAttribute("citys", cs.readByCountry(a.getCity().getCountry()));
+        model.addAttribute("countrys", cos.read());
 
         return "editAddress";
 

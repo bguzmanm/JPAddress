@@ -13,6 +13,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "city")
+@NamedQuery(name="City.findByCountryId", query = "Select c from City c where c.country = ?1")
 public class City {
 
     @Id

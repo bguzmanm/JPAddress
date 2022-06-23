@@ -1,6 +1,7 @@
 package cl.sustantiva.sakila.repos;
 
 import cl.sustantiva.sakila.entitys.City;
+import cl.sustantiva.sakila.entitys.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,8 @@ import java.util.List;
 @Repository
 public interface CityRepo  extends JpaRepository<City, Integer> {
 
-    List<City> findByCountryId(int country_id);
+    public List<City> findByCountryId(Country country);
+
+
 
 }

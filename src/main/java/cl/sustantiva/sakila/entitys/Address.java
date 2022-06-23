@@ -21,7 +21,7 @@ public class Address {
     private String address2;
     private String district;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne()
     @JoinColumn(name = "city_id")
     private City city;
 

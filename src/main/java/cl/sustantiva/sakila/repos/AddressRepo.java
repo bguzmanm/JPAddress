@@ -1,8 +1,12 @@
 package cl.sustantiva.sakila.repos;
 
 import cl.sustantiva.sakila.entitys.Address;
+import cl.sustantiva.sakila.entitys.City;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * JPAddress
@@ -14,4 +18,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface AddressRepo extends JpaRepository<Address, Integer> {
+
+    @Query("Select a from Address a where a.city =:city")
+    public List<Address> findAddressByCity(City city);
 }
