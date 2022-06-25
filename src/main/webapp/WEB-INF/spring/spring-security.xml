@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://www.springframework.org/schema/security"
+            xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http auto-config="true">
+        <intercept-url pattern="/" access="hasAnyAuthority('USER', 'ADMIN')"></intercept-url>
+        <intercept-url pattern="/address" access="hasAnyAuthority('USER', 'ADMIN')"></intercept-url>
+        <intercept-url pattern="/citys" access="hasAnyAuthority('USER', 'ADMIN')"></intercept-url>
+        <intercept-url pattern="/countrys" access="hasAnyAuthority('ADMIN')"></intercept-url>
+
+        <form-login login-page="/login"
+                    authentication-failure-url="/error"
+                    username-parameter="username"
+                    password-parameter="password"/>
+        <csrf disabled="true"/>
+        <logout logout-success-url="/login"/>
+
+    </http>
+
+<!--    <authentication-manager>
+        <authentication-provider>
+            <password-encoder hash="bcrypt"/>
+            <user-service>
+                <user name="brian" authorities="ADMIN"
+                      password="$2a$10$I5sLnE6jdR5UB3K.IKJqe.BTNTFgzKhQWQl7uSlPH.D4ytU5Kz7fO"/>
+                <user name="jeshu" authorities="USER"
+                      password="$2a$10$9bx/L5912uWKCTh9riXC1eBipouENSwWyvClYVcywk2Wv7Am4DIXS" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>-->
+
+    <authentication-manager>
+        <authentication-provider>
+            <password-encoder hash="bcrypt"/>
+            <jdbc-user-service data-source-ref="ds"
+                               users-by-username-query="select username, password, enabled from user where username = ?"
+                               authorities-by-username-query="select ur.username, r.nombre as authority from User_has_ROL ur inner join rol r on (ur.idrol = r.idrol) where ur.username = ?"/>
+        </authentication-provider>
+    </authentication-manager>
+
+</bean:beans>

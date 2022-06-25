@@ -19,6 +19,7 @@ import java.util.List;
 @Repository
 public interface AddressRepo extends JpaRepository<Address, Integer> {
 
+    // JPQL para traer las direcciones de una ciudad
     @Query("Select a from Address a where a.city =:city")
     public List<Address> findAddressByCity(City city);
 }

@@ -20,5 +20,5 @@
 <div class="container">
 <header>
     <h1>Bienvenidos</h1>
-    <a href="${pageContext.request.contextPath}/">Home</a> | <a href="${pageContext.request.contextPath}/address">Direcciones</a> | <a href="${pageContext.request.contextPath}/citys">Ciudades</a> | <a href="${pageContext.request.contextPath}/countrys">Paises</a>
+    <a href="${pageContext.request.contextPath}/">Home</a> | <a href="${pageContext.request.contextPath}/address">Direcciones</a> | <a href="${pageContext.request.contextPath}/citys">Ciudades</a> | <a href="${pageContext.request.contextPath}/countrys">Paises</a> | <a href="${pageContext.request.contextPath}/logout">Salir</a>
 </header>
