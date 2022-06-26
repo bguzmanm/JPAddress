@@ -39,7 +39,7 @@
             <password-encoder hash="bcrypt"/>
             <jdbc-user-service data-source-ref="ds"
                                users-by-username-query="select username, password, enabled from user where username = ?"
-                               authorities-by-username-query="select ur.username, r.nombre as authority from User_has_ROL ur inner join rol r on (ur.idrol = r.idrol) where ur.username = ?"/>
+                               authorities-by-username-query="select ur.username, r.nombre as authority from user_has_rol ur inner join rol r on (ur.idrol = r.idrol) where ur.username = ?"/>
         </authentication-provider>
     </authentication-manager>
 

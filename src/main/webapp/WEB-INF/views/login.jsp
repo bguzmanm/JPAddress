@@ -30,13 +30,13 @@
 
                 <!-- Icon -->
                 <div class="fadeIn first">
-                    <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon"/>
+                    <img src="${pageContext.request.contextPath}/res/img/login.jpg" id="icon" alt="User Icon"/>
                 </div>
 
                 <!-- Login Form -->
                 <form>
-                    <input type="text" id="username" class="fadeIn second" name="username" placeholder="login">
-                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+                    <input type="text" id="username" class="fadeIn second" name="username" placeholder="nombre de usuario">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="contraseña">
                     <input type="submit" class="fadeIn fourth" value="Log In">
                 </form>
 

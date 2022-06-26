@@ -7,39 +7,38 @@ de datos para contener a usuario y sus roles.
 
 
 ```sql
-CREATE TABLE IF NOT EXISTS `sakila`.`User` (
-  `userName` VARCHAR(30) NOT NULL,
-  `password` VARCHAR(100) NOT NULL,
-  `enabled` TINYINT(1) NULL,
-  PRIMARY KEY (`userName`))
+CREATE TABLE IF NOT EXISTS user (
+  userName VARCHAR(30) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  enabled TINYINT(1) NULL,
+  PRIMARY KEY (userName))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `sakila`.`ROL` (
-  `idROL` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`idROL`),
-  UNIQUE INDEX `idROL_UNIQUE` (`idROL` ASC))
+CREATE TABLE IF NOT EXISTS rol (
+  idROL INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  PRIMARY KEY (idROL),
+  UNIQUE INDEX idROL_UNIQUE (idROL ASC))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `sakila`.`User_has_ROL` (
-  `userName` VARCHAR(30) NOT NULL,
-  `idROL` INT NOT NULL,
-  PRIMARY KEY (`userName`, `idROL`),
-  INDEX `fk_User_has_ROL_ROL1_idx` (`idROL` ASC),
-  INDEX `fk_User_has_ROL_User1_idx` (`userName` ASC),
-  CONSTRAINT `fk_User_has_ROL_User1`
-    FOREIGN KEY (`userName`)
-    REFERENCES `sakila`.`User` (`userName`)
+CREATE TABLE IF NOT EXISTS user_has_rol (
+  userName VARCHAR(30) NOT NULL,
+  idROL INT NOT NULL,
+  PRIMARY KEY (userName, idROL),
+  INDEX fk_User_has_ROL_ROL1_idx (idROL ASC),
+  INDEX fk_User_has_ROL_User1_idx (userName ASC),
+  CONSTRAINT fk_User_has_ROL_User1
+    FOREIGN KEY (userName)
+    REFERENCES user (userName)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_User_has_ROL_ROL1`
-    FOREIGN KEY (`idROL`)
-    REFERENCES `sakila`.`ROL` (`idROL`)
+  CONSTRAINT fk_User_has_ROL_ROL1
+    FOREIGN KEY (idROL)
+    REFERENCES rol (idROL)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 ```
-
 
 Y luego poblarla acá con este script.
 
